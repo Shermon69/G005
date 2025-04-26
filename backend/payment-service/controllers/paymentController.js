@@ -10,11 +10,11 @@ const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
 //initialize a stripe payment intent and storing it
 export const createPayment = async (req, res) => {
     try {
-        const { amount, userId } = req.body;
+        const { amount, userId, email, phone } = req.body;
 
         //validate input
-        if (!amount || !userId) {
-            return res.status(400).json({ message : 'Amount and userId are required' });
+        if (!amount || !userId || !email || !phone) {
+            return res.status(400).json({ message : 'Amount, userId, email and phone are required' });
         }
 
         //stripe uses amount in cents
@@ -23,7 +23,7 @@ export const createPayment = async (req, res) => {
         //creating stripe payment intent
         const paymentIntent = await stripeInstance.paymentIntents.create({
             amount: amountInCents,
-            currency: 'USD',
+            currency: 'LKR',
             metadata: { userId }
         });
 
@@ -31,7 +31,9 @@ export const createPayment = async (req, res) => {
         const transaction = new Transaction ({
             userId,
             amount,
-            currency: 'USD',
+            email,
+            phone,
+            currency: 'LKR',
             status: 'pending',
             stripePaymentId: paymentIntent.id
         });
@@ -119,6 +121,22 @@ export const handleStripeWebhook = async (req, res) => {
 
             if(transaction) {
                 transaction.status = 'success';
+
+                try {
+                    await axios.post('http://localhost:5003/api/notifications/notify-user', {
+                        emailTo: transaction.email,
+                        email: {
+                            subject: 'Payment confirmed',
+                            text: `Hi! Your payment of RS ${transaction.amount/100} was received. Thank you!` 
+                        }
+                    });
+                    
+                    console.log('Notifications sent to user.')
+                }
+                catch (NotifyError) {
+                    console.error('Failed to send notification:', NotifyError.message);
+                }
+
                 await transaction.save();
                 console.log(`Transaction ${transaction._id} marked as success`);
             } 
