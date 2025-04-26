@@ -13,7 +13,7 @@ export const sendEmail = async (req, res) => {
 
     try {
         //sending the email
-        const info = await transporter.sendMail({
+        await transporter.sendMail({
             from: `"Food delivery app" <${process.env.EMAIL_USER}>`, //sender
             to,
             subject,
@@ -29,12 +29,9 @@ export const sendEmail = async (req, res) => {
         });
 
         //Generate test preview URL
-        const previewURL = nodemailer.getTestMessageUrl(info);
+       // const previewURL = nodemailer.getTestMessageUrl(info);
 
-        res.status(200).json({
-            message: 'Email sent successfully',
-            preview: previewURL || '(No preview available)'
-        });
+        res.status(200).json({message: 'Email sent successfully' });
 
     }
     catch (err) {
@@ -107,14 +104,14 @@ export const notifyUser = async (req, res) => {
     try {
         //Send email if email is provided
         if (email && email.subject && email.text && emailTo) {
-            const info = await transporter.sendMail({
+            await transporter.sendMail({
                 from: `"Food delivery app" <${process.env.EMAIL_USER}>`,
                 to: emailTo,
                 subject: email.subject,
                 text: email.text
             });
 
-            const preview = nodemailer.getTestMessageUrl(info);
+            // const preview = nodemailer.getTestMessageUrl(info);
 
             await Notification.create({
                 type: 'email',
@@ -124,7 +121,7 @@ export const notifyUser = async (req, res) => {
                 status: 'sent'
             });
 
-            results.push({ type: 'email', status: 'sent', preview});
+            results.push({ type: 'email', status: 'sent'});
         }
 
         //send SMS (if provided)
