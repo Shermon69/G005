@@ -141,7 +141,7 @@ const RestaurantOrders = () => {
                 <ul>
                   {order.orderedItems.map((item, index) => (
                     <li key={index}>
-                      {item.quantity} x {item.item.name} - $
+                      {item.quantity} x {item.item.name} - Rs.
                       {item.item.price.toFixed(2)}
                     </li>
                   ))}
