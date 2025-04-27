@@ -1,0 +1,31 @@
+{
+  "name": "resturent-crud",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "clean": "rimraf dist",
+    "copy": "copyfiles -u 1 \"src/**/*\" dist && copyfiles package.json dist",
+    "prepare-dist": "node prepare-dist.js",
+    "build": "npm run clean && npm run copy && node prepare-dist.js",
+    "serve": "npm run build && node dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "rimraf": "^6.0.1"
+  }
+}

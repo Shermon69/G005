@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: restaurant-app-config
+data:
+  PORT: "8081"
+  MONGODB_URI: "mongodb+srv://root:root@cluster0.spmcifx.mongodb.net/resturent?retryWrites=true&w=majority"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restaurant-app
+  labels:
+    app: restaurant-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: restaurant-app
+  template:
+    metadata:
+      labels:
+        app: restaurant-app
+    spec:
+      containers:
+        - name: restaurant-app
+          image: restaurant-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          envFrom:
+            - configMapRef:
+                name: restaurant-app-config
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: restaurant-app-service
+spec:
+  selector:
+    app: restaurant-app
+  ports:
+    - port: 80
+      targetPort: 8081
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: restaurant-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: restaurant-app-service
+                port:
+                  number: 80
