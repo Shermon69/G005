@@ -1,0 +1,86 @@
+.profile-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-container div {
+  margin-bottom: 15px;
+}
+
+.profile-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.profile-container input,
+.profile-container textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.profile-container input:focus,
+.profile-container textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.profile-container .error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.profile-container button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-container button:hover {
+  opacity: 0.9;
+}
+
+.profile-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.profile-container .delete-btn {
+  background-color: #dc3545;
+  margin-top: 10px;
+}
+
+.profile-container .logout-btn {
+  background-color: #6c757d;
+  margin-top: 10px;
+}
+
+.profile-loading,
+.profile-error {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-top: 50px;
+}

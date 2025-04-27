@@ -1,0 +1,139 @@
+.restaurant-orders {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.status-filter {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.pending {
+  background-color: #ffecb3;
+  color: #856404;
+}
+
+.confirmed {
+  background-color: #b3e5fc;
+  color: #01579b;
+}
+
+.preparing {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.delivered {
+  background-color: #d1c4e9;
+  color: #4527a0;
+}
+
+.cancelled {
+  background-color: #ffcdd2;
+  color: #b71c1c;
+}
+
+.customer-info {
+  margin-bottom: 15px;
+}
+
+.customer-info p {
+  margin: 5px 0;
+}
+
+.order-items {
+  margin-bottom: 15px;
+}
+
+.order-items ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.order-items li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.total {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.status-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.delete-btn {
+  padding: 8px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+.no-orders {
+  text-align: center;
+  margin-top: 30px;
+  color: #666;
+  font-size: 1.2rem;
+}

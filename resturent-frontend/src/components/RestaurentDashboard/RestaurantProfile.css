@@ -1,0 +1,75 @@
+.restaurant-profile {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-profile h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.restaurant-profile div {
+  margin-bottom: 15px;
+}
+
+.restaurant-profile label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.restaurant-profile input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.restaurant-profile input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.restaurant-profile .error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.restaurant-profile button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.restaurant-profile button:hover {
+  background-color: #0056b3;
+}
+
+.restaurant-profile button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.restaurant-profile .delete-btn {
+  background-color: #dc3545;
+}
+
+.restaurant-profile .delete-btn:hover {
+  background-color: #a71d2a;
+}

@@ -1,0 +1,93 @@
+/* Base layout */
+.restaurant-dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 220px;
+  background-color: #1f2937;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-links button.active,
+.nav-links button:hover {
+  background-color: #374151;
+}
+
+.logout-btn {
+  margin-top: auto;
+  background-color: #ef4444;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9fafb;
+  overflow-y: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .restaurant-dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.add-to-cart-btn {
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 10%;
+  width: 100px;
+  height: 30px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #333333;
+  transform: scale(1.05);
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.95);
+}

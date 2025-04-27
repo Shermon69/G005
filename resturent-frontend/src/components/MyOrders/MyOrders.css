@@ -1,0 +1,100 @@
+.my-orders-container {
+  max-width: 1200px; /* Increased width for better readability */
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff; /* Changed to white for a cleaner look */
+  border: 1px solid #e0e0e0; /* Lighter border color */
+  border-radius: 12px; /* Slightly rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+}
+
+.my-orders-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem; /* Larger font size for the heading */
+  color: #2c3e50; /* Dark blue for contrast */
+  font-weight: 600; /* Bold font weight */
+  letter-spacing: 1px; /* Spacing between letters for elegance */
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 1rem; /* Adjusted font size for readability */
+}
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid #f0f0f0; /* Very light border for minimalism */
+  padding: 12px 15px; /* Increased padding for better spacing */
+  text-align: left;
+  vertical-align: middle; /* Align content vertically in the middle */
+}
+
+.orders-table th {
+  background-color: #f8f9fa; /* Light gray background for headers */
+  font-weight: 600; /* Semi-bold font for headers */
+  color: #333; /* Dark gray for contrast */
+  text-transform: uppercase; /* Uppercase headers for emphasis */
+  letter-spacing: 0.5px; /* Spacing between letters */
+  font-size: 0.9rem; /* Smaller font size for headers */
+}
+
+.orders-table td ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.orders-table td ul li {
+  margin-bottom: 5px;
+  font-size: 0.9rem; /* Smaller font size for items */
+}
+
+.orders-table td img {
+  max-width: 50px; /* Add image support with fixed width */
+  height: auto;
+  border-radius: 4px; /* Rounded corners for images */
+  margin-right: 10px; /* Space between image and text */
+}
+
+.orders-table tr:nth-child(even) {
+  background-color: #fafafa; /* Very light gray for even rows */
+}
+
+.orders-table tr:hover {
+  background-color: #f1f8ff; /* Light blue hover effect */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.no-orders-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 20px;
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .my-orders-container {
+    padding: 20px;
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .my-orders-container h1 {
+    font-size: 1.5rem;
+  }
+}
