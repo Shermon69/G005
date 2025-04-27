@@ -147,7 +147,7 @@ const RestaurantOrders = () => {
                   ))}
                 </ul>
                 <p className="total">
-                  <strong>Total:</strong> ${order.totalBilled.toFixed(2)}
+                  <strong>Total:</strong> Rs.{order.totalBilled.toFixed(2)}
                 </p>
               </div>
 

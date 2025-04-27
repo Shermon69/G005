@@ -134,7 +134,7 @@ const MyOrders = () => {
                   ))}
                 </ul>
               </td>
-              <td style={cellStyle}>${order.totalBilled.toFixed(2)}</td>
+              <td style={cellStyle}>Rs.{order.totalBilled.toFixed(2)}</td>
               <td style={cellStyle}>{order.address}</td>
               <td style={cellStyle}>
                 {order.status.charAt(0).toUpperCase() + order.status.slice(1)}

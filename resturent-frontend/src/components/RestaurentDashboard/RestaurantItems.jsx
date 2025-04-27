@@ -260,7 +260,7 @@ const RestaurantItems = () => {
                   </td>
                   <td>{item.name}</td>
                   <td>{item.description}</td>
-                  <td>${item.price.toFixed(2)}</td>
+                  <td>Rs.{item.price.toFixed(2)}</td>
                   <td>
                     <span
                       className={`status ${

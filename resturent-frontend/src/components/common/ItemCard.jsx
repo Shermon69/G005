@@ -29,7 +29,7 @@ const ItemCard = ({ item, restaurantId, onCartUpdate }) => {
       <div className="item-details">
         <h3>{item.name}</h3>
         <p className="item-description">{item.description}</p>
-        <p className="item-price">${item.price.toFixed(2)}</p>
+        <p className="item-price">Rs.{item.price.toFixed(2)}</p>
 
         <div className="cart-controls">
           <button className="add-to-cart-btn" onClick={handleAddToCart}>

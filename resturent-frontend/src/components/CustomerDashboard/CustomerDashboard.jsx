@@ -105,7 +105,7 @@ const CustomerDashboard = () => {
               <p className="item-description">{item.description}</p>
               <div className="item-restaurant-price">
                 <span>From {item.restaurant.name}</span>
-                <span className="price">${item.price.toFixed(2)}</span>
+                <span className="price">Rs.{item.price.toFixed(2)}</span>
               </div>
             </div>
           </div>
