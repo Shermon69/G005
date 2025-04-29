@@ -27,6 +27,16 @@ const transactionSchema = new mongoose.Schema({
         default: 'LKR'
     },
 
+    orderId: {
+        type: String,
+        required: true
+      },
+
+      address: {
+        type: String,
+        required: true
+      },
+
     status: {
         type: String,
         enum: ['success','failed','pending'],

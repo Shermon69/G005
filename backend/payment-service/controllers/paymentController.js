@@ -1,20 +1,22 @@
 import Stripe  from 'stripe';
 import dotenv from 'dotenv';
 import Transaction from '../models/transaction.js';
+import axios from 'axios';
+
 
 dotenv.config();
 
 //initializing stripe using the secret key
 const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY);
-
+//const notify = process.env.NOTIFICATION_URI
 //initialize a stripe payment intent and storing it
 export const createPayment = async (req, res) => {
     try {
-        const { amount, userId, email, phone } = req.body;
+        const { amount, userId, email, phone, orderId, address } = req.body;
 
         //validate input
-        if (!amount || !userId || !email || !phone) {
-            return res.status(400).json({ message : 'Amount, userId, email and phone are required' });
+        if (!amount || !userId || !email || !phone || !orderId || !address) {
+            return res.status(400).json({ message : 'All fields are required.' });
         }
 
         //stripe uses amount in cents
@@ -24,12 +26,14 @@ export const createPayment = async (req, res) => {
         const paymentIntent = await stripeInstance.paymentIntents.create({
             amount: amountInCents,
             currency: 'LKR',
-            metadata: { userId }
+            metadata: { userId, orderId }
         });
 
         //storing transaction in DB with status : pending
         const transaction = new Transaction ({
             userId,
+            orderId,
+            address,
             amount,
             email,
             phone,
@@ -125,10 +129,28 @@ export const handleStripeWebhook = async (req, res) => {
                 try {
                     await axios.post('http://localhost:5003/api/notifications/notify-user', {
                         emailTo: transaction.email,
+                        smsTo: transaction.phone,
                         email: {
-                            subject: 'Payment confirmed',
-                            text: `Hi! Your payment of RS ${transaction.amount/100} was received. Thank you!` 
-                        }
+                            subject: 'Payment Received',
+                            text: `Hi ${transaction.email},
+
+                    Thank you for your payment! Here's your receipt:
+
+                    Order ID: ${transaction.orderId}
+                    Delivery Address: ${transaction.address}
+                    Contact: ${transaction.phone}
+                    Amount Paid: Rs. ${transaction.amount}
+                    Date: ${new Date().toLocaleString()}
+                    Status: Success
+
+                    We’re preparing your order. A delivery driver will be assigned shortly.
+
+                    Thanks for choosing us! 
+                    - Food Delivery Team
+                    `
+                    },
+                    sms: `Hi! Your payment of Rs. ${transaction.amount} was received. Order ID: ${transaction.orderId}. Delivery soon.` 
+                        
                     });
                     
                     console.log('Notifications sent to user.')
